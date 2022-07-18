@@ -1,0 +1,18 @@
+class Solution(object):
+    def countStudents(self, students, sandwiches):
+        """
+        :type students: List[int]
+        :type sandwiches: List[int]
+        :rtype: int
+        """
+        stuck = 0
+        while stuck < len(students):
+            student = students[0]
+            students.pop(0)
+            if student == sandwiches[0]:
+                stuck = 0
+                sandwiches.pop(0)
+            else:
+                students.append(student)
+                stuck+=1
+        return stuck
