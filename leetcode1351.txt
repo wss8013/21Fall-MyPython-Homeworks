@@ -1,0 +1,16 @@
+class Solution(object):
+    def countNegatives(self, grid):
+        def binarySearch(row):
+            left = 0
+            right = len(row)
+            while left < right:
+                middle = (left + right) // 2
+                if row[middle] < 0:
+                    right = middle
+                else:
+                    left = middle + 1
+            return len(row) - left 
+        count = 0
+        for row in grid:
+            count += binarySearch(row)
+        return count

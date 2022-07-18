@@ -1,0 +1,16 @@
+class Solution(object):
+    delta = 1
+    def newtonMethod(self, x, guess):
+        better_guess = 0.5*(guess+x/guess)
+        if abs(better_guess - guess) < 1:
+            return better_guess
+        better_guess = self.newtonMethod(x, better_guess)
+        return better_guess
+       
+    
+    def mySqrt(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        return int(self.newtonMethod(x, 1))
