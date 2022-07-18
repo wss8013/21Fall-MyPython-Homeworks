@@ -1,0 +1,16 @@
+class Solution(object):
+    def repeatedNTimes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        dict_nums = {}
+        for i in nums:
+            if i not in dict_nums:
+                dict_nums[i] = 1
+            else:
+                dict_nums[i] += 1
+        result = 0
+        for key in dict_nums:
+            if dict_nums[key] == len(nums)/2:
+                return key

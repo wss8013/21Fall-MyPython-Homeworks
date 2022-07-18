@@ -1,0 +1,26 @@
+class Solution(object):
+    def findWords(self, words):
+        """
+        :type words: List[str]
+        :rtype: List[str]    
+         """ 
+        first = 'qwertyuiop'
+        second = 'asdfghjkl'
+        third = 'zxcvbnm'
+        char_list = [0] * 26
+        for i in first:
+            char_list[ord(i) - ord('a')] = 1
+        for i in second:
+            char_list[ord(i) - ord('a')] = 2
+        for i in third:
+            char_list[ord(i) - ord('a')] = 3
+        res = []
+        for word in words:
+            lower_word = word.lower()
+            is_one_row = True
+            for j in range(len(lower_word)-1):
+                if char_list[ord(lower_word[j]) - ord('a')] != char_list[ord(lower_word[j+1]) - ord('a')]:
+                    is_one_row = False
+            if is_one_row:
+                res.append(word)
+        return res

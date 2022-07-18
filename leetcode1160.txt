@@ -1,0 +1,28 @@
+class Solution(object):
+    def countCharacters(self, words, chars):
+        """
+        :type words: List[str]
+        :type chars: str
+        :rtype: int
+        """
+        result = ""
+        chars_dict = {}
+        for i in chars:
+            if i not in chars_dict:
+                chars_dict[i] = 1
+            else:
+                chars_dict[i] += 1
+        for word in words:
+            word_dict = {}
+            for i in word:
+                if i not in word_dict:
+                    word_dict[i] = 1
+                else:
+                    word_dict[i] += 1
+            can_form = True
+            for key in word_dict:
+                if key not in chars_dict or chars_dict[key] < word_dict[key]:
+                    can_form = False
+            if can_form:
+                result += word
+        return len(result) 
