@@ -1,0 +1,14 @@
+class Solution(object):
+    def findNumbers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        count = 0
+        len_newlist = []
+        for i in nums:
+            len_newlist.append(len(str(i)))
+        for j in len_newlist:
+            if j % 2 == 0:
+                count += 1
+        return count
